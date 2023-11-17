@@ -1,9 +1,8 @@
 package com.sport.mapper;
 
-import com.sport.pojo.entity.Dish;
+import com.sport.common.pojo.entity.Dish;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
 
 @Mapper
 public interface TestMapper {

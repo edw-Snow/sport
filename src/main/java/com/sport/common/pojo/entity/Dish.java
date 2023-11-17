@@ -1,4 +1,4 @@
-package com.sport.pojo.entity;
+package com.sport.common.pojo.entity;
 
 import lombok.Data;
 
