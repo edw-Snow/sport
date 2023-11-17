@@ -1,5 +1,9 @@
 package com.sport.common.result;
 
+
+import lombok.Data;
+
+@Data
 public class Result<T> {
     private Integer code; //1 成功，0 失败
     private String msg; //错误信息
