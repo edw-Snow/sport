@@ -24,3 +24,12 @@ sport:
     user-secret-key: sportXE
     user-ttl: 7200000
     uer-token-name: authentication
+
+#输出日志
+logging:
+  level:
+    com:
+      sport:
+        mapper: debug
+        service: info
+        controller: info
