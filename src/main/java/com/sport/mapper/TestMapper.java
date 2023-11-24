@@ -1,5 +1,6 @@
 package com.sport.mapper;
 
+import com.sport.common.pojo.entity.AdminUser;
 import com.sport.common.pojo.entity.Dish;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -8,4 +9,7 @@ import org.apache.ibatis.annotations.Select;
 public interface TestMapper {
     @Select("SELECT * FROM `dish` WHERE id = 46")
     Dish search();
+
+    @Select("SELECT * FROM admin_user")
+    AdminUser searchForAdmin();
 }
