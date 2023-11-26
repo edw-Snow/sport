@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
 
-
+/**
+ * 出错时封装response返回信息
+ */
 public class ErrorResponseWrapper extends HttpServletResponseWrapper {
     public ErrorResponseWrapper(HttpServletResponse response) {
         super(response);

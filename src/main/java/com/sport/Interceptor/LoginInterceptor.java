@@ -30,12 +30,14 @@ public class LoginInterceptor implements HandlerInterceptor {
         String userToken = request.getHeader(jwtProperty.getUerTokenName());
         ErrorResponseWrapper errorResponseWrapper = new ErrorResponseWrapper(response);
 
+        // 没有管理员和用户的token，即是没有登录
         if (StringUtils.isEmpty(adminToken) && StringUtils.isEmpty(userToken)) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("msg", MessageConstant.NOT_LOGIN);
             errorResponseWrapper.sendCustomErrorResponse(jsonObject.toString(), HttpStatusConstant.UNAUTHORIZED);
         }
 
+        //解析管理员或用户token,并存入线程
         try {
             if (userToken != null && userToken.length() > 0) {
                 Claims claims = JwtUtil.parseJwt(userToken, jwtProperty.getUserSecretKey());
@@ -47,6 +49,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             Integer userID = Integer.valueOf(claims.get(JwtClaimConstant.USER_ID).toString());
             RoleContext.setRoleContext(userID,"admin");
             return true;
+        //解析token报错，返回前端状态码401
         } catch (Exception e) {
             log.info(e.getMessage());
             errorResponseWrapper.sendCustomErrorResponse(MessageConstant.JWT_VALIDATION_ERROR,HttpStatusConstant.UNAUTHORIZED);

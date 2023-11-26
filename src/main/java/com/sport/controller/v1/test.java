@@ -1,12 +1,11 @@
 package com.sport.controller.v1;
 
 import com.sport.annotation.AdminRule;
-import com.sport.common.constant.HttpStatusConstant;
 import com.sport.common.constant.JwtClaimConstant;
 import com.sport.common.pojo.dto.AdminUserLoginDTO;
 import com.sport.common.pojo.entity.AdminUser;
 import com.sport.common.property.JwtProperty;
-import com.sport.common.result.SuccessResponseResult;
+import com.sport.common.result.ResponseResult;
 import com.sport.common.util.JwtUtil;
 import com.sport.mapper.TestMapper;
 import com.sport.service.TestService;
@@ -43,7 +42,7 @@ public class test {
 
 
     @PostMapping("/login")
-    public SuccessResponseResult<String> login(@RequestBody AdminUserLoginDTO adminUserLoginDTO) {
+    public ResponseResult<String> login(@RequestBody AdminUserLoginDTO adminUserLoginDTO) {
         AdminUser adminUser = new AdminUser();
         BeanUtils.copyProperties(adminUserLoginDTO,adminUser);
         String username = adminUser.getUsername();
@@ -51,7 +50,7 @@ public class test {
         Map<String,Object> claim =new HashMap<>();
         claim.put(JwtClaimConstant.ID,adminUser1.getUserId());
         String token = JwtUtil.creatJwt(jwtProperty.getUserSecretKey(), jwtProperty.getAdminTtl(), claim);
-        return SuccessResponseResult.success(token);
+        return ResponseResult.success(token);
     }
 
 

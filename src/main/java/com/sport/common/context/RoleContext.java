@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 线程装入管理员权限，当用切点AdminRule时取出校验
+ * 将管理员或者用户的id和role存入线程
  */
 public class RoleContext {
     public static ThreadLocal<Map<Integer,String>> RoleContext = new ThreadLocal<>();
