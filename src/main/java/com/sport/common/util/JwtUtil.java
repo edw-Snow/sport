@@ -21,15 +21,13 @@ public class JwtUtil {
      * @return jwt令牌
      */
     public static String creatJwt(String secretKey, long ttlMillis, Map<String ,Object> claims){
-        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS384;
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
         long expMillis = System.currentTimeMillis() + ttlMillis;
         Date date = new Date(expMillis);
 
         JwtBuilder builder = Jwts.builder()
                 .setClaims(claims)
-                //签发时间
-                .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(date)
                 .signWith(signatureAlgorithm,secretKey.getBytes(StandardCharsets.UTF_8));
         return builder.compact();
@@ -46,7 +44,7 @@ public class JwtUtil {
         Claims claims = Jwts.parser()
                 .setSigningKey(secretKey.getBytes(StandardCharsets.UTF_8))
                 //取出Claim
-                .parseClaimsJwt(token).getBody();
+                .parseClaimsJws(token).getBody();
         return claims;
     }
 }

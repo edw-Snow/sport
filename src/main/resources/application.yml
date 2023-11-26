@@ -2,12 +2,16 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: dev
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/zufangbangbang?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: root
-      password: 123456
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      driver-class-name: ${sport.datasource.driver-class-name}
+      url: jdbc:mysql://${sport.datasource.host}:${sport.datasource.port}/${sport.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${sport.datasource.username}
+      password: ${sport.datasource.password}
+
+
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -20,10 +24,10 @@ sport:
   jwt:
     admin-secret-key: sportSGT
     admin-ttl: 7200000
-    admin-token-name: token
+    admin-token-name: adminToken
     user-secret-key: sportXE
     user-ttl: 7200000
-    uer-token-name: authentication
+    uer-token-name: token
 
 #输出日志
 logging:

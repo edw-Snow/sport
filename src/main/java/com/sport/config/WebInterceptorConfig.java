@@ -7,17 +7,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-//@Component
-//@Slf4j
-//public class WebInterceptorConfig extends WebMvcConfigurationSupport {
-//    @Autowired
-//    private LoginInterceptor loginInterceptor;
-//
-//    @Override
-//    protected void addInterceptors(InterceptorRegistry registry) {
-//        log.info("=========>注册拦截器");
-//        registry.addInterceptor(loginInterceptor)
-//                .addPathPatterns("/**");
-////                .excludePathPatterns("/login");
-//    }
-//}
+@Component
+@Slf4j
+public class WebInterceptorConfig extends WebMvcConfigurationSupport {
+    @Autowired
+    private LoginInterceptor loginInterceptor;
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        log.info("=========>注册拦截器");
+        registry.addInterceptor(loginInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/user/wxLogin","/login");
+    }
+}

@@ -3,6 +3,9 @@ package com.sport;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //@SpringBootTest
 class SportAckendApplicationTests {
 
@@ -11,6 +14,6 @@ class SportAckendApplicationTests {
     }
 
     public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
+        System.out.println(1/0);
     }
 }
