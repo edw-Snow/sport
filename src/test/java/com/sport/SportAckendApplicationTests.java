@@ -1,19 +1,14 @@
 package com.sport;
 
-import org.junit.jupiter.api.Test;
+import com.alibaba.fastjson.JSON;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashMap;
-import java.util.Map;
-
-//@SpringBootTest
+@SpringBootTest
 class SportAckendApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
 
     public static void main(String[] args) {
-        System.out.println(1/0);
+        String name= JSON.toJSONString("da");
+        System.out.println(name);
     }
 }

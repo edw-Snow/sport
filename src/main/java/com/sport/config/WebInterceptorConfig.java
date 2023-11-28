@@ -13,11 +13,11 @@ public class WebInterceptorConfig extends WebMvcConfigurationSupport {
     @Autowired
     private LoginInterceptor loginInterceptor;
 
-    @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
-        log.info("=========>注册拦截器");
-        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/user/wxLogin","/login");
-    }
+//    @Override
+//    protected void addInterceptors(InterceptorRegistry registry) {
+//        log.info("=========>注册拦截器");
+//        registry.addInterceptor(loginInterceptor)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/user/wxLogin","/login");
+//    }
 }

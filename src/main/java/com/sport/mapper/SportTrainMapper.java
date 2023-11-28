@@ -3,7 +3,6 @@ package com.sport.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface TestMapper {
+public interface SportTrainMapper {
 
-    void test(String testName);
 }
