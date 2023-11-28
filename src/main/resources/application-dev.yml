@@ -3,6 +3,6 @@ sport:
     driver-class-name: com.mysql.cj.jdbc.Driver
     host: localhost
     port: 3306
-    database: zufangbangbang
+    database: tiyu
     username: root
     password: 123456
