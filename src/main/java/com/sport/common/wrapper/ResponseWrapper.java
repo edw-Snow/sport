@@ -1,6 +1,6 @@
 package com.sport.common.wrapper;
 
-import com.sport.common.result.ResponseResult;
+import com.sport.common.result.Result;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
@@ -20,7 +20,7 @@ public class ResponseWrapper extends HttpServletResponseWrapper {
 //        originalResponse.setContentType("application/json;charset=UTF-8");
 //        originalResponse.getWriter().write(message);
 //    }
-    public void sendCustomErrorResponse(ResponseResult result) throws IOException {
+    public void sendCustomErrorResponse(Result result) throws IOException {
         HttpServletResponse originalResponse = (HttpServletResponse) getResponse();
         originalResponse.setStatus(result.getCode());
         originalResponse.setContentType("application/json;charset=UTF-8");

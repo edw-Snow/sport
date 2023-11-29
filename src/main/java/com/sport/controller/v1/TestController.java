@@ -1,7 +1,7 @@
 package com.sport.controller.v1;
 
 import com.sport.common.property.JwtProperty;
-import com.sport.common.result.ResponseResult;
+import com.sport.common.result.Result;
 import com.sport.common.util.JwtUtil;
 import com.sport.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,10 @@ public class TestController {
 
     @RequestMapping("/login")
 //    @AdminRule
-    public ResponseResult<String> login(){
+    public Result<String> login(){
         HashMap<String, Object> map = new HashMap<>();
         String token = JwtUtil.creatJwt(jwtProperty.getAdminSecretKey(), jwtProperty.getAdminTtl(), map);
-        return ResponseResult.success(token);
+        return Result.success(token);
     }
 
     public static void main(String[] args) {

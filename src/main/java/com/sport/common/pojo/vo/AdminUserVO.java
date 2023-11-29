@@ -1,4 +1,4 @@
-package com.sport.common.pojo.entity;
+package com.sport.common.pojo.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,16 +11,14 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminUser {
-    private Integer adminId;
+public class AdminUserVO {
     private String name;
-    private String salt;
-    private String username;
-    private String password;
+    private Integer adminId;
+    private String adminToken;
+    private String userName;
     private String gender;
     private String phone;
     private String idNumber;
     private String avatar;
     private Date createTime;
 }
-

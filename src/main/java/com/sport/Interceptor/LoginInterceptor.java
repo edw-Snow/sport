@@ -40,12 +40,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             if (userToken != null && userToken.length() > 0) {
                 Claims claims = JwtUtil.parseJwt(userToken, jwtProperty.getUserSecretKey());
-                Integer id = Integer.valueOf(claims.get(JwtClaimConstant.ID).toString());
+                Integer id = Integer.valueOf(claims.get(JwtClaimConstant.USER_ID).toString());
                 RoleContext.setRoleContext(id,"user");
                 return true;
             }
             Claims claims = JwtUtil.parseJwt(adminToken, jwtProperty.getAdminSecretKey());
-            Integer userID = Integer.valueOf(claims.get(JwtClaimConstant.Admin_ID).toString());
+            Integer userID = Integer.valueOf(claims.get(JwtClaimConstant.ADMIN_ID).toString());
             RoleContext.setRoleContext(userID,"admin");
             return true;
         //解析token报错，返回前端状态码401
