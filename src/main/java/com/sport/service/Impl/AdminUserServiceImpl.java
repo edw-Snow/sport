@@ -37,7 +37,7 @@ public class AdminUserServiceImpl implements AdminUserService {
         }
 
         //密码错误
-        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        password = DigestUtils.md5DigestAsHex((adminUser.getSalt()+password).getBytes());
         if (!password.equals(adminUser.getPassword())) {
             throw new RuntimeException(MessageConstant.PASSWORD_ERROR);
         }

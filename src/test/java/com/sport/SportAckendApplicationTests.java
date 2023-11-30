@@ -1,8 +1,6 @@
 package com.sport;
 
-import com.sport.common.pojo.entity.AdminUser;
-import com.sport.common.pojo.vo.AdminUserVO;
-import org.springframework.beans.BeanUtils;
+import com.sport.common.util.Md5Util;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -10,10 +8,9 @@ class SportAckendApplicationTests {
 
 
     public static void main(String[] args) {
-        AdminUser adminUser = AdminUser.builder().adminId(1).name("mike")
-                .password("dads").build();
-        AdminUserVO adminUserVO = AdminUserVO.builder().build();
-        BeanUtils.copyProperties(adminUser,adminUserVO);
-        System.out.println(adminUserVO);
+        String salt = Md5Util.createSalt();
+        System.out.println(salt);
+        String password = Md5Util.createMd5Password("shanguanTang",salt);
+        System.out.println(password);
     }
 }
