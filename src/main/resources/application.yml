@@ -23,12 +23,17 @@ mybatis:
 
 sport:
   jwt:
-    admin-secret-key: sportSGT
-    admin-ttl: 7200000
-    admin-token-name: adminToken
-    user-secret-key: sportXE
-    user-ttl: 7200000
-    uer-token-name: token
+    admin-secret-key: ${sport.jwt.admin-secret-key}
+    admin-ttl: ${sport.jwt.admin-ttl}
+    admin-token-name: ${sport.jwt.admin-token-name}
+    user-secret-key: ${sport.jwt.user-secret-key}
+    user-ttl: ${sport.jwt.user-ttl}
+    uer-token-name: ${sport.jwt.uer-token-name}
+
+  wechat:
+      appid: ${sport.wechat.appid}
+      secret: ${sport.wechat.secret}
+
 
 #输出日志
 logging:

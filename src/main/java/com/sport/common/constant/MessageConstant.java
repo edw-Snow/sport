@@ -8,4 +8,6 @@ public class MessageConstant {
     public static final String ACCOUNT_NOT_FOUND = "未找到账号";
 
     public static final String PASSWORD_ERROR = "密码错误";
+
+    public static final String LOGIN_FAIL = "登录失败";
 }

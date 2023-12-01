@@ -2,9 +2,9 @@ package com.sport.service.Impl;
 
 import com.sport.common.constant.JwtClaimConstant;
 import com.sport.common.constant.MessageConstant;
-import com.sport.common.pojo.dto.AdminUserDTO;
+import com.sport.common.pojo.dto.AdminLoginDTO;
 import com.sport.common.pojo.entity.AdminUser;
-import com.sport.common.pojo.vo.AdminUserVO;
+import com.sport.common.pojo.vo.AdminLoginVO;
 import com.sport.common.property.JwtProperty;
 import com.sport.common.util.JwtUtil;
 import com.sport.mapper.AdminUserMapper;
@@ -26,9 +26,9 @@ public class AdminUserServiceImpl implements AdminUserService {
     private JwtProperty jwtProperty;
 
     @Override
-    public AdminUserVO login(AdminUserDTO adminUserDTO) {
-        String username = adminUserDTO.getUsername();
-        String password = adminUserDTO.getPassword();
+    public AdminLoginVO login(AdminLoginDTO adminLoginDTO) {
+        String username = adminLoginDTO.getUsername();
+        String password = adminLoginDTO.getPassword();
         AdminUser adminUser = adminUserMapper.getByUsername(username);
 
         //账号未注册
@@ -46,8 +46,8 @@ public class AdminUserServiceImpl implements AdminUserService {
         Map<String, Object> claims = new HashMap<>();
         claims.put(JwtClaimConstant.ADMIN_ID, adminUser.getAdminId());
         String adminToken = JwtUtil.creatJwt(jwtProperty.getAdminSecretKey(), jwtProperty.getAdminTtl(), claims);
-        AdminUserVO adminUserVO = AdminUserVO.builder().adminToken(adminToken).build();
-        BeanUtils.copyProperties(adminUser, adminUserVO);
-        return adminUserVO;
+        AdminLoginVO adminLoginVO = AdminLoginVO.builder().adminToken(adminToken).build();
+        BeanUtils.copyProperties(adminUser, adminLoginVO);
+        return adminLoginVO;
     }
 }

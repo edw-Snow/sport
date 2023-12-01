@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminUserVO {
+public class AdminLoginVO {
     private String name;
     private Integer adminId;
     private String adminToken;

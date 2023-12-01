@@ -1,10 +1,11 @@
 package com.sport.Interceptor;
 
-import com.alibaba.fastjson.JSONObject;
+import com.sport.common.constant.HttpStatusConstant;
 import com.sport.common.constant.JwtClaimConstant;
 import com.sport.common.constant.MessageConstant;
 import com.sport.common.context.RoleContext;
 import com.sport.common.property.JwtProperty;
+import com.sport.common.result.Result;
 import com.sport.common.util.JwtUtil;
 import com.sport.common.wrapper.ResponseWrapper;
 import io.jsonwebtoken.Claims;
@@ -31,9 +32,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         // 没有管理员和用户的token，即是没有登录
         if (StringUtils.isEmpty(adminToken) && StringUtils.isEmpty(userToken)) {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("msg", MessageConstant.NOT_LOGIN);
-//            errorResponseWrapper.sendCustomErrorResponse(jsonObject.toString(), HttpStatusConstant.UNAUTHORIZED);
+            Result<Object> result = new Result<>();
+            result.setMsg(MessageConstant.NOT_LOGIN);
+            result.setCode(HttpStatusConstant.UNAUTHORIZED);
+            responseWrapper.sendCustomErrorResponse(result);
+            return false;
         }
 
         //解析管理员或用户token,并存入线程
@@ -51,8 +54,16 @@ public class LoginInterceptor implements HandlerInterceptor {
         //解析token报错，返回前端状态码401
         } catch (Exception e) {
             log.info(e.getMessage());
-//            errorResponseWrapper.sendCustomErrorResponse(MessageConstant.JWT_VALIDATION_ERROR,HttpStatusConstant.UNAUTHORIZED);
+            Result<Object> result = new Result<>();
+            result.setMsg(MessageConstant.JWT_VALIDATION_ERROR);
+            result.setCode(HttpStatusConstant.UNAUTHORIZED);
+            responseWrapper.sendCustomErrorResponse(result);
             return false;
         }
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        RoleContext.remove();
     }
 }
