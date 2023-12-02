@@ -1,5 +1,6 @@
 package com.sport.common.wrapper;
 
+import com.alibaba.fastjson.JSON;
 import com.sport.common.result.Result;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,6 @@ public class ResponseWrapper extends HttpServletResponseWrapper {
         HttpServletResponse originalResponse = (HttpServletResponse) getResponse();
         originalResponse.setStatus(result.getCode());
         originalResponse.setContentType("application/json;charset=UTF-8");
-        originalResponse.getWriter().write(result.toString());
+        originalResponse.getWriter().write(JSON.toJSONString(result));
     }
-
 }

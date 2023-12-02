@@ -10,4 +10,6 @@ public class MessageConstant {
     public static final String PASSWORD_ERROR = "密码错误";
 
     public static final String LOGIN_FAIL = "登录失败";
+
+    public static final String SQL_EXCEPTION = "sql异常";
 }

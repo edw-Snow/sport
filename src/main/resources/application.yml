@@ -4,6 +4,8 @@ server:
 spring:
   profiles:
     active: dev
+  main:
+    allow-circular-references: true
   datasource:
     druid:
       driver-class-name: ${sport.datasource.driver-class-name}
@@ -15,7 +17,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.sport.pojo.entity
+  type-aliases-package: com.sport.common.pojo.entity
   #开启数据库命名与Java驼峰命名的转换
   configuration:
     map-underscore-to-camel-case: true

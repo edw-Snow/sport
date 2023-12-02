@@ -13,7 +13,7 @@ sport:
       secret: bfd7ca72e28f42be7f3880f25f2a6ff6
   jwt:
     admin-secret-key: V8ZigEhihMdQN_934VJFhRAC-mYR8nZrTaOz6QwDC74=
-    admin-ttl: 7200000
+    admin-ttl: 3600000
     admin-token-name: adminToken
     user-secret-key: mS3jD0gGoMGqo0i3M1BBUGkWPoA-4quk5B1sLYfVdAA=
     user-ttl: 7200000

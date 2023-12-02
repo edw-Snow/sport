@@ -1,26 +1,21 @@
-package com.sport.common.pojo.entity;
+package com.sport.common.pojo.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WxUser {
+public class QueryWxUserVO {
     private Integer userId;
     private String gender;
     private String wxuserId;
-    private String openid;
-    private String nickName;
+    private String name;
     private String phone;
     private String address;
-    private String avatar;
-    private String name;
-    private Date createTime;
-    private Date updateTime;
+    private String createTime;
+    private String updateTime;
 }

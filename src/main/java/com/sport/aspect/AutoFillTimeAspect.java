@@ -58,7 +58,6 @@ public class AutoFillTimeAspect {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
 }

@@ -1,15 +1,17 @@
-package com.sport.common.pojo.entity;
+package com.sport.common.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Project {
-    private Integer projectId;
-    private String name;
+@Builder
+public class PageResult {
+    private long total;
+    private List records;
 }
